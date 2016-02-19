@@ -1,0 +1,30 @@
+* Projekt ISA 2015, Varianta - Offline netflow sonda 
+* autor: Matus Ondris (xondri04) 
+
+Funkcia programu : 
+  citanie PCAP zaznamu a spracovavanie paketov do flows a ich export na kolektor.
+  ja som z dovodu zleho casoveho rozpolozenia esport na kolektor ani citnie zo stdin nenaimplementoval.
+
+Pouzitie:
+
+./isa -h
+./isa_exporter [-i <file>] [-c <netflow_collector>[:<port>]] [-I <interval>] [-m <count>] [-t <seconds>]
+
+kde:
+-h   vypise napovedu
+-i <file> nazov spracovavaneho .pcap suboru v pripade nezdania stdin
+-c <netflow_collector>:<port> IP adresa a port netflow kolektoru v pripade nezadania sa pouzije defaultna
+<-I <interval>  interval v sekundach po ktorom sa exportuju zaznamy na kolektor defaultne 300s
+-m <count>   maximalne mnozstvo flow po ktorom dosiahnuti dojde k exportu záznamov na kolektor defaultne 50
+-t <seconds> interval po ktoreho vyprsani je mozne povazovat monitorovane TCP spojenie za ukoncené (a mozné ho oznacit ako expirované)
+
+nieje ziadny povynny parameter
+
+
+Subory:
+
+exporter.cpp  -- hlavna funkcnost programu 
+exporter.h -- struktury flows
+Makefile   -- Makefile, funguje pro FreeBSD a Linux
+README     -- tento soubor
+
